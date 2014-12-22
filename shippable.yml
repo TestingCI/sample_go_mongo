@@ -7,6 +7,8 @@ go:
 services:
   - mongodb
 
+before_install:
+  - sudo apt-get update 
 # Installs tool used for code coverage report
 install:
   - go get code.google.com/p/go.tools/cmd/cover
