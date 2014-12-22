@@ -7,6 +7,7 @@ go:
 services:
   - mongodb
 
+
 #before_install:
  # - sudo apt-get update 
 # Installs tool used for code coverage report
@@ -19,6 +20,7 @@ before_script:
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
 
+
 script:
   - export GOPATH=$PWD
   - export PATH=$PATH:$GOPATH/bin
@@ -30,6 +32,8 @@ script:
   - go install github.com/OneRedOak/sample
   - go test -coverprofile=coverage.txt -covermode count github.com/OneRedOak/sample
   - gocover-cobertura < coverage.txt > coverage.xml
+
+
 
 after_script:
   - mv $PWD/src/github.com/OneRedOak/sample/junit.xml $PWD/shippable/testresults/
